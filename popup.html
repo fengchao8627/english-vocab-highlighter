@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8">
+<style>
+body{width:320px;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;padding:14px;color:#222}
+h1{font-size:16px;margin:0 0 4px} .sub{color:#888;font-size:12px;margin-bottom:12px}
+label{font-size:13px;font-weight:600;display:block;margin:10px 0 6px}
+select,input[type=range]{width:100%}
+.row{display:flex;justify-content:space-between;align-items:center;margin:10px 0}
+.switch{position:relative;width:44px;height:24px}.switch input{opacity:0;width:0;height:0}
+.slider{position:absolute;inset:0;background:#ccc;border-radius:999px;cursor:pointer}.slider:before{content:"";position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}
+input:checked + .slider{background:#ffd600}input:checked + .slider:before{transform:translateX(20px)}
+.stats{background:#fffde7;border:1px solid #fff59d;border-radius:8px;padding:8px 10px;font-size:13px;line-height:1.7}
+button{width:100%;padding:8px;border-radius:8px;border:1px solid #ddd;background:#fff;cursor:pointer;margin-top:8px}
+button.primary{background:#ffd600;border-color:#ffd600;font-weight:700}
+.hint{font-size:12px;color:#999;line-height:1.6;margin-top:8px}
+</style></head><body>
+<h1>📒 英语生词高亮助手</h1><div class="sub">生词标黄 · 悬停看音标释义 · 没看默认会了</div>
+
+<div class="row"><span>启用高亮</span><label class="switch"><input type="checkbox" id="enabled"><span class="slider"></span></label></div>
+<div class="row"><span>划词 / 划句解释</span><label class="switch"><input type="checkbox" id="selectionExplain"><span class="slider"></span></label></div>
+
+<label>我的英语水平（低于此水平的词会被标黄）</label>
+<select id="level">
+  <option value="primary">小学</option>
+  <option value="junior">初中</option>
+  <option value="senior">高中</option>
+  <option value="cet4">大学四级 CET-4</option>
+  <option value="cet6">大学六级 CET-6</option>
+  <option value="advanced">考研 / 专八</option>
+</select>
+
+<label>没查看几次后默认学会：<span id="thLabel">3</span> 次（不同页面）</label>
+<input type="range" id="threshold" min="1" max="6" step="1" value="3">
+<div class="hint">逻辑：一个词在 3 个不同页面都被标黄、你都没悬停查看，就认为你其实会它，自动加入“已学会”，下次不再标记。在悬停框里点“我会了”可立即学会，点“生词本”则会一直标记。</div>
+
+<div class="stats" id="stats">加载中…</div>
+<button class="primary" id="openOptions">⚙️ 设置 API 地址 / 模型 / Key / 词表</button>
+<button id="refresh">刷新当前页生效</button>
+<script src="popup.js"></script>
+</body></html>

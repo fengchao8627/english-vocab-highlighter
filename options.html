@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><title>生词高亮助手 - 设置</title>
+<style>
+body{font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;max-width:760px;margin:32px auto;padding:0 20px;color:#222;line-height:1.7}
+h1{font-size:22px} h2{font-size:17px;margin-top:32px;border-bottom:1px solid #eee;padding-bottom:6px}
+input[type=text],input[type=password]{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;box-sizing:border-box}
+button{padding:8px 18px;border-radius:8px;border:1px solid #ddd;background:#fff;cursor:pointer;margin-right:8px;margin-top:8px}
+button.primary{background:#ffd600;border-color:#ffd600;font-weight:700}
+.hint{color:#888;font-size:13px} .ok{color:#2e7d32} code{background:#f5f5f5;padding:2px 6px;border-radius:4px}
+textarea{width:100%;height:120px;border:1px solid #ddd;border-radius:8px;padding:10px;box-sizing:border-box}
+.chip{display:inline-block;background:#fff8e1;border:1px solid #ffe082;border-radius:999px;padding:2px 10px;margin:3px;font-size:13px}
+.chip b{cursor:pointer;color:#c62828;margin-left:6px}
+</style></head><body>
+<h1>📒 英语生词高亮助手 · 设置</h1>
+
+<h2>1. API 设置（地址、模型、Key 都可改）</h2>
+<p class="hint">默认是 DeepSeek，也可以换成任何 OpenAI 格式的接口：OpenAI、硅基流动、Kimi、通义、本地 Ollama 兼容服务等。Key 只存在你浏览器本地存储里，查词时由插件后台直连你填的地址，不经过任何第三方服务器。不填 Key 也能用（走免费词典，只有音标+英文释义，没有中文）。</p>
+<label style="font-weight:600;font-size:14px">API Base URL</label>
+<input type="text" id="apiBaseUrl" placeholder="https://api.deepseek.com">
+<p class="hint">填 Base 即可，如 <code>https://api.deepseek.com</code>、<code>https://api.openai.com/v1</code>、<code>https://api.siliconflow.cn/v1</code>；填完整地址 <code>.../chat/completions</code> 也可以，插件会自动归一化。</p>
+<label style="font-weight:600;font-size:14px">模型 Model</label>
+<input type="text" id="apiModel" placeholder="deepseek-flash">
+<p class="hint">默认 <code>deepseek-flash</code>；换服务商时填对应模型名，如 OpenAI 的 <code>gpt-4o-mini</code>、DeepSeek 官方的 <code>deepseek-chat</code>。换模型后已缓存的释义不会自动失效，如需重新查请点下面「清空释义缓存」。</p>
+<label style="font-weight:600;font-size:14px">API Key</label>
+<input type="password" id="apiKey" placeholder="sk-...">
+<p class="hint">DeepSeek 去 <code>platform.deepseek.com</code> → API Keys 创建；其他服务商去各自控制台创建。</p>
+<div><button class="primary" id="saveKey">保存 API 设置</button><button id="testKey">测试查词（abandon）</button><button id="testSentence">测试划句解释</button><span id="keyStatus"></span></div>
+
+<h2>1b. 划词 / 划句解释</h2>
+<p class="hint">在任意网页上用鼠标选中英文（一个词、词组或一句话），旁边会弹出「✦ 解释选区」按钮，点开看中文翻译 + 结构讲解 + 难词拆解。单个词会直接走查词结果。选区解释结果同样本地缓存。</p>
+<label><input type="checkbox" id="selectionExplain"> 启用划词 / 划句解释（默认开启）</label>
+
+<h2>2. 我的词表</h2>
+<p class="hint">“已学会”里的词不会再被标记，点 × 可移除（移除后会重新标记）。“生词本”里的词会一直被标记。</p>
+<h3>已学会 (<span id="learnedCount">0</span>)</h3><div id="learnedList"></div>
+<h3>生词本 (<span id="bookCount">0</span>)</h3><div id="bookList"></div>
+<div>
+  <button id="exportBtn">导出词表 JSON</button>
+  <button id="clearSeen">清空“观察中”计数</button>
+  <button id="clearCache">清空释义缓存</button>
+</div>
+<textarea id="exportBox" placeholder="导出结果会显示在这里，也可以粘贴 JSON 到这里点导入" style="margin-top:12px"></textarea>
+<div><button id="importBtn">导入词表 JSON</button></div>
+
+<h2>3. 分级说明</h2>
+<p class="hint">小学≈掌握最常用 800 词 / 初中≈1600 / 高中≈3500 / 四级≈4500 / 六级≈6000 / 考研专八≈8000。插件按词频表判断：你所选级别以内的词默认会、以外标黄。专有名词（大写开头且不在词频表内）自动跳过，代码块、输入框不标记。</p>
+
+<script src="options.js"></script>
+</body></html>

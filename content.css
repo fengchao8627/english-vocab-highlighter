@@ -1,0 +1,40 @@
+.vocab-highlight {
+  background: #fff176 !important;
+  color: inherit !important;
+  border-radius: 3px;
+  padding: 0 1px;
+  cursor: help;
+  border-bottom: 1px dashed #f9a825;
+}
+.vocab-highlight:hover { background: #ffeb3b !important; }
+#vocab-tooltip {
+  position: fixed; z-index: 2147483647; max-width: 340px; min-width: 220px;
+  background: #fff; color: #222; border: 1px solid #e0e0e0; border-radius: 10px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.18); padding: 12px 14px;
+  font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-size: 14px; line-height: 1.55; pointer-events: auto;
+}
+#vocab-tooltip .vt-word { font-size: 18px; font-weight: 700; }
+#vocab-tooltip .vt-phonetic { color: #666; margin-left: 8px; font-weight: 400; font-size: 14px; }
+#vocab-tooltip .vt-pos { display:inline-block; background:#fff8e1; border:1px solid #ffe082; border-radius:4px; padding:0 6px; font-size:12px; margin:6px 0; }
+#vocab-tooltip .vt-cn { font-weight: 600; }
+#vocab-tooltip .vt-en { color:#555; font-size:13px; }
+#vocab-tooltip .vt-ex { margin-top:8px; color:#444; font-size:13px; background:#f7f7f7; border-radius:6px; padding:6px 8px; }
+#vocab-tooltip .vt-actions { margin-top:10px; display:flex; gap:8px; }
+#vocab-tooltip button { border:1px solid #ddd; background:#fff; border-radius:999px; padding:4px 12px; cursor:pointer; font-size:13px; }
+#vocab-tooltip button.primary { background:#ffd600; border-color:#ffd600; font-weight:600; }
+#vocab-tooltip .vt-hint { margin-top:8px; color:#999; font-size:12px; }
+#vocab-select-btn {
+  position: fixed; z-index: 2147483647; background: #ffd600; color: #212121;
+  border: 1px solid #f9a825; border-radius: 999px; padding: 5px 13px;
+  font-size: 13px; font-weight: 600; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.2);
+  font-family: -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+#vocab-select-btn:hover { background: #ffea00; }
+#vocab-tooltip .vt-quote { font-style: italic; color: #444; margin-bottom: 6px; word-break: break-word; padding-right: 22px; }
+#vocab-tooltip #vt-close {
+  position: absolute; top: 6px; right: 8px; width: 24px; height: 24px; line-height: 1;
+  border: none; background: transparent; color: #999; font-size: 20px; cursor: pointer; padding: 0;
+}
+#vocab-tooltip #vt-close:hover { color: #333; }
+#vocab-tooltip .vt-kw { display: inline-block; background: #fff8e1; border: 1px solid #ffe082; border-radius: 999px; padding: 2px 9px; font-size: 12px; margin: 2px 4px 2px 0; }

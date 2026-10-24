@@ -1,0 +1,15 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Local packaging output
+*.zip
+dist/
+
+# Never commit API keys or personal exports
+*.local.json
+vocab-export.json
+.env
